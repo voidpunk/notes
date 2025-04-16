@@ -154,6 +154,15 @@
                     });
                 </script>
 
+                <div id="page-toc" class="floating-toc">
+                    <h3 class="toc-title">
+						<a href="#">
+							
+						</a>
+					</h3>
+                    <ul id="page-toc-list"></ul>
+                </div>
+
                 <div id="content" class="content">
                     <main>
                         <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
@@ -199,6 +208,53 @@
             window.setTimeout(window.print, 100);
         });
         </script>
+
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const tocList = document.getElementById("page-toc-list");
+				const headers = document.querySelectorAll(".content h2, .content h3");
+				const linksMap = new Map();
+				// Build TOC
+				headers.forEach(header => {
+					if (!header.id) {
+						header.id = header.textContent.trim().toLowerCase().replace(/\s+/g, "-");
+						}
+					const li = document.createElement("li");
+					li.style.marginLeft = header.tagName === "H3" ? "1em" : "0";
+					const a = document.createElement("a");
+					a.href = `#${header.id}`;
+					a.textContent = header.textContent;
+					a.addEventListener("click", () => {
+						// Manually highlight on click
+						document.querySelectorAll("#page-toc-list a").forEach(el => el.classList.remove("active"));
+						a.classList.add("active");
+					});
+					linksMap.set(header.id, a);
+					li.appendChild(a);
+					tocList.appendChild(li);
+				});
+				// Scroll-based highlight
+				const observer = new IntersectionObserver(
+					entries => {
+						let visibleEntries = entries.filter(entry => entry.isIntersecting);
+						if (visibleEntries.length > 0) {
+							// Pick the top-most visible heading
+							const topEntry = visibleEntries.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+							const id = topEntry.target.id;
+							document.querySelectorAll("#page-toc-list a").forEach(el => el.classList.remove("active"));
+							linksMap.get(id)?.classList.add("active");
+						}
+					},
+					{
+						root: null,
+						rootMargin: "-20% 0px -70% 0px",
+						threshold: 0.1
+					}
+				);
+				headers.forEach(header => observer.observe(header));
+			});
+		</script>
 
     </div>
     </body>
