@@ -181,8 +181,8 @@ Add CMake to PATH environment variable</li>
 <li>Compile OpenCV:
 <ol>
 <li>Download the last release source code of <a href="https://github.com/opencv/opencv">OpenCV</a>)</li>
-<li>Run the executable and extract to <code>C:\</code></li>
-<li>Create a folder <code>mingw&lt;version&gt;</code> at path: <code>C:\opencv\opencv&lt;version&gt;\build\x64</code> <em>(the last OpenCV version currently is 4.11, while the last MinGW version currently is 14.20, so it will be: <code>C:\opencv\opencv411\build\x64\mingw1420</code>)</em></li>
+<li>Run the executable and extract to <code>C:\opencv</code> (create it if not present), then rename the extracted directory <code>C:\opencv\opencv</code> from <code>opencv</code> to <code>opencv&lt;version&gt;</code></li>
+<li>Create a folder <code>mingw&lt;version&gt;</code> at path: <code>C:\opencv\opencv&lt;version&gt;\build\x64</code> <em>(the last OpenCV version currently is 4.11, while the last MinGW version currently is 14.20, so it will be: <code>C:\opencv\opencv4110\build\x64\mingw1420</code>)</em></li>
 <li>Open CMake and set it up:
 <ol>
 <li>Set “Where is the source code” to <code>C:\opencv\opencv&lt;version&gt;\sources</code> (i.e. the file containing CMakeLists.txt)</li>
