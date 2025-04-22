@@ -3,4 +3,8 @@ authors = ["Nil ☿"]
 language = "en"
 multilingual = false
 src = "src"
-title = "Void Notes"
+
+[output.html]
+default-theme = "dark"
+preferred-dark-theme = "ayu"
+smart-punctuation = true
