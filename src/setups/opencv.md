@@ -16,8 +16,8 @@ Here are the detailed instruction on how to compile OpenCV on Windows for MinGW 
 4. Get OpenCV:
 5. Compile OpenCV:
     1. Download the last release source code of [OpenCV](https://github.com/opencv/opencv))
-    2. Run the executable and extract to `C:\`
-    3. Create a folder `mingw<version>` at path: `C:\opencv\opencv<version>\build\x64` *(the last OpenCV version currently is 4.11, while the last MinGW version currently is 14.20, so it will be: `C:\opencv\opencv411\build\x64\mingw1420`)*
+    2. Run the executable and extract to `C:\opencv` (create it if not present), then rename the extracted directory `C:\opencv\opencv` from `opencv` to `opencv<version>`
+    3. Create a folder `mingw<version>` at path: `C:\opencv\opencv<version>\build\x64` *(the last OpenCV version currently is 4.11, while the last MinGW version currently is 14.20, so it will be: `C:\opencv\opencv4110\build\x64\mingw1420`)*
     4. Open CMake and set it up:
         1. Set "Where is the source code" to `C:\opencv\opencv<version>\sources` (i.e. the file containing CMakeLists.txt)
         2. Set "Where to build the binaries" to the mingw folder:  
