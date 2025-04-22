@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="light sidebar-visible" dir="ltr">
+<html lang="en" class="dark sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Chapter 1 - Void Notes</title>
+        <title>OpenCV</title>
 
 
         <!-- Custom HTML head -->
@@ -12,33 +12,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "";
-            const default_light_theme = "light";
-            const default_dark_theme = "navy";
+            const path_to_root = "../";
+            const default_light_theme = "dark";
+            const default_dark_theme = "ayu";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="../toc.js"></script>
     </head>
     <body>
     <div id="body-container">
@@ -65,7 +65,7 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
-            html.classList.remove('light')
+            html.classList.remove('dark')
             html.classList.add(theme);
             html.classList.add("js");
         </script>
@@ -91,7 +91,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -123,10 +123,10 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Void Notes</h1>
+                    <h1 class="menu-title"></h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -153,25 +153,73 @@
                     });
                 </script>
 
-                <div id="page-toc" class="floating-toc">
-                    <h3 class="toc-title">
-						<a href="#">
-							Chapter 1
-						</a>
-					</h3>
-                    <ul id="page-toc-list"></ul>
-                </div>
-
                 <div id="content" class="content">
                     <main>
-                        <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
-<p>[TEST]</p>
+                        <h1 id="opencv"><a class="header" href="#opencv">OpenCV</a></h1>
+<h2 id="windows"><a class="header" href="#windows">Windows</a></h2>
+<h3 id="mingw"><a class="header" href="#mingw">MinGW</a></h3>
+<p>Here are the detailed instruction on how to compile OpenCV on Windows for MinGW 64-bit.</p>
+<ol>
+<li>Install <a href="cpp.html">C++</a></li>
+<li>Install CMake:
+<ol>
+<li>Download the latest release version of <code>Windows x64 Installer</code> of <a href="https://cmake.org/download/">CMake</a></li>
+<li>Install CMake selecting:
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+Add CMake to PATH environment variable</li>
+</ul>
+</li>
+<li>(Re)open a powershell and test the installation with:
+<ul>
+<li><code>cmake --version</code></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Get OpenCV:</li>
+<li>Compile OpenCV:
+<ol>
+<li>Download the last release source code of <a href="https://github.com/opencv/opencv">OpenCV</a>)</li>
+<li>Run the executable and extract to <code>C:\</code></li>
+<li>Create a folder <code>mingw&lt;version&gt;</code> at path: <code>C:\opencv\opencv&lt;version&gt;\build\x64</code> <em>(the last OpenCV version currently is 4.11, while the last MinGW version currently is 14.20, so it will be: <code>C:\opencv\opencv411\build\x64\mingw1420</code>)</em></li>
+<li>Open CMake and set it up:
+<ol>
+<li>Set “Where is the source code” to <code>C:\opencv\opencv&lt;version&gt;\sources</code> (i.e. the file containing CMakeLists.txt)</li>
+<li>Set “Where to build the binaries” to the mingw folder:<br />
+<code>C:\opencv\opencv&lt;version&gt;\build\x64\mingw&lt;version&gt;</code></li>
+<li>Click on “Configure”</li>
+<li>Click on “Specify native compilers”</li>
+<li>For C add: <code>C:/mingw64/bin/gcc.exe</code> and for C++ add: <code>C:/mingw64/bin/c++.exe</code> (if MinGW hasn’t been installed following the <a href="cpp.html">C++</a>, use the equivalent paths)</li>
+<li>Click on “Finish”</li>
+<li>Click “Generate”</li>
+</ol>
+</li>
+<li>Open a powershell and cd to the build path:<br />
+<code>cd C:\opencv\opencv&lt;version&gt;\build\x64\mingw&lt;version&gt;</code></li>
+<li>Run the command: <code>mingw32-make</code> and pray the Gods…</li>
+<li>Run the command: <code>mingw32-make install</code></li>
+</ol>
+</li>
+</ol>
+<p>If everything has been successful, you will have the following paths:</p>
+<ul>
+<li><strong>inc:</strong> <code>C:\opencv\opencv&lt;version&gt;\build\x64\mingw&lt;version&gt;\install\include</code></li>
+<li><strong>bin:</strong> <code>C:\opencv\opencv&lt;version&gt;\build\x64\mingw&lt;version&gt;\install\x64\mingw\bin</code></li>
+<li><strong>lib:</strong> <code>C:\opencv\opencv&lt;version&gt;\build\x64\mingw&lt;version&gt;\install\x64\mingw\lib</code></li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../setups/cuda.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
+                            <a rel="next prefetch" href="../setups/qt.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -179,7 +227,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../setups/cuda.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
+                    <a rel="next prefetch" href="../setups/qt.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
@@ -192,63 +246,16 @@
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 
-
-
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				const tocList = document.getElementById("page-toc-list");
-				const headers = document.querySelectorAll(".content h2, .content h3");
-				const linksMap = new Map();
-				// Build TOC
-				headers.forEach(header => {
-					if (!header.id) {
-						header.id = header.textContent.trim().toLowerCase().replace(/\s+/g, "-");
-						}
-					const li = document.createElement("li");
-					li.style.marginLeft = header.tagName === "H3" ? "1em" : "0";
-					const a = document.createElement("a");
-					a.href = `#${header.id}`;
-					a.textContent = header.textContent;
-					a.addEventListener("click", () => {
-						// Manually highlight on click
-						document.querySelectorAll("#page-toc-list a").forEach(el => el.classList.remove("active"));
-						a.classList.add("active");
-					});
-					linksMap.set(header.id, a);
-					li.appendChild(a);
-					tocList.appendChild(li);
-				});
-				// Scroll-based highlight
-				const observer = new IntersectionObserver(
-					entries => {
-						let visibleEntries = entries.filter(entry => entry.isIntersecting);
-						if (visibleEntries.length > 0) {
-							// Pick the top-most visible heading
-							const topEntry = visibleEntries.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-							const id = topEntry.target.id;
-							document.querySelectorAll("#page-toc-list a").forEach(el => el.classList.remove("active"));
-							linksMap.get(id)?.classList.add("active");
-						}
-					},
-					{
-						root: null,
-						rootMargin: "-20% 0px -70% 0px",
-						threshold: 0.1
-					}
-				);
-				headers.forEach(header => observer.observe(header));
-			});
-		</script>
 
     </div>
     </body>

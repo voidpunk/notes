@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="light sidebar-visible" dir="ltr">
+<html lang="en" class="dark sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Page not found - Void Notes</title>
+        <title>Page not found</title>
         <base href="/">
 
 
@@ -35,8 +35,8 @@
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
-            const default_light_theme = "light";
-            const default_dark_theme = "navy";
+            const default_light_theme = "dark";
+            const default_dark_theme = "ayu";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
@@ -66,7 +66,7 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
-            html.classList.remove('light')
+            html.classList.remove('dark')
             html.classList.add(theme);
             html.classList.add("js");
         </script>
@@ -124,7 +124,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">Void Notes</h1>
+                    <h1 class="menu-title"></h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -153,15 +153,6 @@
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
-
-                <div id="page-toc" class="floating-toc">
-                    <h3 class="toc-title">
-						<a href="#">
-							
-						</a>
-					</h3>
-                    <ul id="page-toc-list"></ul>
-                </div>
 
                 <div id="content" class="content">
                     <main>
@@ -203,53 +194,6 @@
 
         <!-- Custom JS scripts -->
 
-
-
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				const tocList = document.getElementById("page-toc-list");
-				const headers = document.querySelectorAll(".content h2, .content h3");
-				const linksMap = new Map();
-				// Build TOC
-				headers.forEach(header => {
-					if (!header.id) {
-						header.id = header.textContent.trim().toLowerCase().replace(/\s+/g, "-");
-						}
-					const li = document.createElement("li");
-					li.style.marginLeft = header.tagName === "H3" ? "1em" : "0";
-					const a = document.createElement("a");
-					a.href = `#${header.id}`;
-					a.textContent = header.textContent;
-					a.addEventListener("click", () => {
-						// Manually highlight on click
-						document.querySelectorAll("#page-toc-list a").forEach(el => el.classList.remove("active"));
-						a.classList.add("active");
-					});
-					linksMap.set(header.id, a);
-					li.appendChild(a);
-					tocList.appendChild(li);
-				});
-				// Scroll-based highlight
-				const observer = new IntersectionObserver(
-					entries => {
-						let visibleEntries = entries.filter(entry => entry.isIntersecting);
-						if (visibleEntries.length > 0) {
-							// Pick the top-most visible heading
-							const topEntry = visibleEntries.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-							const id = topEntry.target.id;
-							document.querySelectorAll("#page-toc-list a").forEach(el => el.classList.remove("active"));
-							linksMap.get(id)?.classList.add("active");
-						}
-					},
-					{
-						root: null,
-						rootMargin: "-20% 0px -70% 0px",
-						threshold: 0.1
-					}
-				);
-				headers.forEach(header => observer.observe(header));
-			});
-		</script>
 
     </div>
     </body>
